@@ -26,27 +26,44 @@ void loop() {
   WiFiClient client = server.available();
   if(client) {
     String cont = "";
-    while(client.available()) {
+    boolean done = false;
+    while(client.available() && !done) {
       char c = client.read();
       Serial.write(c);
       cont += c;
-      if(cont == "GET /") {
-        {client.println("<!DOCTYPE html>");}
-        {client.println("<html>");}
-        {client.println("<body>");}
-        {client.println("<p>Hello!</p>");}
-        {client.println("<script type=\"text/javascript\">");}
-        {client.println("document.addEventListener(\"keydown\", function() {");}
-        {client.println("xmlHTTP = new XMLHttpRequest();");}
-        {client.println("xmlHTTP.open(\"GET\", String(event.which), true);");}
-        {client.println("xmlHTTP.send();");}
-        {client.println("});");}
-        {client.println("</script>");}
-        {client.println("</body>");}
-        {client.println("</html>");}
-        client.stop();
+      if(cont == "KEY DOWN w") {
+        Serial.write("w");
+        done = true;
+      }
+      if(cont == "KEY DOWN a") {
+        Serial.write("a");
+        done = true;
+      }
+      if(cont == "KEY DOWN s") {
+        Serial.write("s");
+        done = true;
+      }
+      if(cont == "KEY DOWN d") {
+        Serial.write("d");
+        done = true;
+      }
+
+      if(cont == "KEY UP w") {
+        Serial.write("!w");
+        done = true;
+      }
+      if(cont == "KEY UP a") {
+        Serial.write("!a");
+        done = true;
+      }
+      if(cont == "KEY UP s") {
+        Serial.write("!s");
+        done = true;
+      }
+      if(cont == "KEY UP d") {
+        Serial.write("!d");
+        done = true;
       }
     }
-    client.stop();
   }
 }
