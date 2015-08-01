@@ -26,7 +26,12 @@ void loop() {
   WiFiClient client = server.available();
   if(client) {
     if(client.connected()) {
-      client.println("Hello!");
+      {client.println("<!DOCTYPE html>");}
+      {client.println("<html>");}
+      {client.println("<body>");}
+      {client.println("<p>Hello!</p>")}
+      {client.println("</body>");}
+      {client.println("</html>");}
     }
     client.stop();
   }
