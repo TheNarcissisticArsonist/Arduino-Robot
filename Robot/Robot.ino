@@ -25,20 +25,27 @@ void setup() {
 void loop() {
   WiFiClient client = server.available();
   if(client) {
-    if(client.connected()) {
-      {client.println("<!DOCTYPE html>");}
-      {client.println("<html>");}
-      {client.println("<body>");}
-      {client.println("<p>Hello!</p>");}
-      {client.println("<script type=\"text/javascript\">");}
-      {client.println("document.addEventListener(\"keydown\", function() {");}
-      {client.println("xmlHTTP = new XMLHttpRequest();");}
-      {client.println("xmlHTTP.open(\"GET\", String(event.which), true);");}
-      {client.println("xmlHTTP.send();");}
-      {client.println("});");}
-      {client.println("</script>");}
-      {client.println("</body>");}
-      {client.println("</html>");}
+    String cont = "";
+    while(client.available()) {
+      char c = client.read();
+      Serial.write(c);
+      cont += c;
+      if(cont == "GET /") {
+        {client.println("<!DOCTYPE html>");}
+        {client.println("<html>");}
+        {client.println("<body>");}
+        {client.println("<p>Hello!</p>");}
+        {client.println("<script type=\"text/javascript\">");}
+        {client.println("document.addEventListener(\"keydown\", function() {");}
+        {client.println("xmlHTTP = new XMLHttpRequest();");}
+        {client.println("xmlHTTP.open(\"GET\", String(event.which), true);");}
+        {client.println("xmlHTTP.send();");}
+        {client.println("});");}
+        {client.println("</script>");}
+        {client.println("</body>");}
+        {client.println("</html>");}
+        client.stop();
+      }
     }
     client.stop();
   }
