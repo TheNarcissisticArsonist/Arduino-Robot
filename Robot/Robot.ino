@@ -29,7 +29,10 @@ void loop() {
       {client.println("<!DOCTYPE html>");}
       {client.println("<html>");}
       {client.println("<body>");}
-      {client.println("<p>Hello!</p>")}
+      {client.println("<p>Hello!</p>");}
+      {client.println("<script type=\"text/javascript\">");}
+      {client.println("alert(\"Hello!\");");}
+      {client.println("</script>");}
       {client.println("</body>");}
       {client.println("</html>");}
     }
