@@ -9,11 +9,17 @@ WiFiServer server(80);
 
 void setup() {
   Serial.begin(9600);
+
   status = WiFi.begin(ssid, pass);
   if(status != WL_CONNECTED) {
     Serial.println("WiFi not connected!");
     while(true);
   }
+  Serial.println("Connected to WiFi.");
+
+  server.begin();
+  IPAddress myIP = WiFi.localIP();
+  Serial.print("IP: "); Serial.println(myIP);
 }
 
 void loop() {
