@@ -19,8 +19,33 @@ public class Client {
 				if(e.getKeyCode() == KeyEvent.VK_SPACE) {
 					System.exit(0);
 				}
+				if(e.getKeyCode() == KeyEvent.VK_W) {
+					System.out.println("W");
+				}
+				if(e.getKeyCode() == KeyEvent.VK_A) {
+					System.out.println("A");
+				}
+				if(e.getKeyCode() == KeyEvent.VK_S) {
+					System.out.println("S");
+				}
+				if(e.getKeyCode() == KeyEvent.VK_D) {
+					System.out.println("D");
+				}
 			}
-			public void keyReleased(KeyEvent e) {}
+			public void keyReleased(KeyEvent e) {
+				if(e.getKeyCode() == KeyEvent.VK_W) {
+					System.out.println("w");
+				}
+				if(e.getKeyCode() == KeyEvent.VK_A) {
+					System.out.println("a");
+				}
+				if(e.getKeyCode() == KeyEvent.VK_S) {
+					System.out.println("s");
+				}
+				if(e.getKeyCode() == KeyEvent.VK_D) {
+					System.out.println("d");
+				}
+			}
 		});
 	}
 }
